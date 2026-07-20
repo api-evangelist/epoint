@@ -1,0 +1,46 @@
+generated: '2026-07-19'
+method: searched
+source: https://developer.epoint.az/en/authentication
+docs: https://developer.epoint.az/en/authentication
+summary:
+  types:
+  - custom-signature
+  api_key_in:
+  - body
+  oauth2_flows: []
+  note: >-
+    Epoint does not use OAuth or a bearer token. Every request is authenticated
+    with a merchant public_key plus an HMAC-style request signature over the
+    Base64-encoded JSON payload, keyed by the merchant private_key.
+schemes:
+- name: EpointSignature
+  type: custom
+  scheme: data+signature
+  description: >-
+    Each API request sends two form-encoded POST parameters. `data` is the
+    Base64-encoded JSON body (which itself carries the merchant `public_key`).
+    `signature` is base64_encode(sha1(private_key + data + private_key, raw=1)),
+    proving the merchant holds the private key and the payload was not tampered
+    with. The same signature scheme is used to verify inbound callbacks.
+  parameters:
+    public_key:
+      location: json-body
+      description: Merchant identifier issued at registration (e.g. i000000001).
+    data:
+      location: form-body
+      description: Base64-encoded JSON request payload.
+    signature:
+      location: form-body
+      description: Base64(SHA1(private_key + data + private_key)) integrity/auth signature.
+  private_key:
+    handling: server-side-secret
+    description: Never transmitted; used only to compute/verify the signature.
+callback_verification:
+  method: same-signature
+  description: >-
+    Inbound callbacks to the merchant result_url carry `data` + `signature`.
+    The merchant recomputes the signature with its private_key and compares to
+    confirm authenticity before decoding `data`.
+tracing:
+  request_id_field: trace_id
+  response_header: X-Request-ID
