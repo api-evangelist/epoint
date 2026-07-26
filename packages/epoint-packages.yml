@@ -1,0 +1,44 @@
+generated: '2026-07-19'
+method: searched
+source: https://developer.epoint.az/en/sdks
+docs: https://developer.epoint.az/en/sdks
+note: >-
+  Epoint does not publish SDKs under its own GitHub organization. The libraries
+  and plugins below are authored by Rafo Abbas and are the ones officially
+  referenced/recommended from developer.epoint.az's "SDKs & Plugins" section.
+  official is set to false because they live under an individual's account, not
+  an Epoint-owned org, but they are the documentation's endorsed integrations.
+packages:
+- language: php
+  registry: packagist
+  name: rafoabbas/epoint-php
+  url: https://packagist.org/packages/rafoabbas/epoint-php
+  repo: https://github.com/rafoabbas/epoint-php
+  install: composer require rafoabbas/epoint-php
+  version: v0.2.3
+  requires: PHP 8.2+
+  official: false
+  endorsed_by_docs: true
+  description: >-
+    Full-featured PHP SDK supporting all Epoint API endpoints (payments, card
+    tokenization, split payments, pre-auth, Apple Pay, Google Pay, wallets,
+    invoices) with a fluent, type-safe builder API and callback signature
+    verification.
+- language: php
+  registry: github
+  name: epoint-woocommerce
+  url: https://github.com/rafoabbas/epoint-woocommerce-9.x.x
+  install: WordPress/WooCommerce plugin
+  platform: WooCommerce 9.x on WordPress 6.6+
+  official: false
+  endorsed_by_docs: true
+  description: WooCommerce payment gateway plugin for Epoint.
+- language: php
+  registry: github
+  name: epoint-opencart
+  url: https://github.com/rafoabbas/epoint-opencart-v3.0.x
+  install: OpenCart plugin
+  platform: OpenCart 3.0.x
+  official: false
+  endorsed_by_docs: true
+  description: OpenCart payment extension for Epoint.

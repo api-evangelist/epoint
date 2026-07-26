@@ -1,20 +1,75 @@
 aid: epoint
 name: Epoint
-description: Epoint is a company surfaced as a portfolio company of 500-global and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Epoint (epoint.az) is an Azerbaijani digital payment aggregator and
+  e-commerce platform for small and medium enterprises, backed by 500 Global.
+  It lets merchants accept online card payments on their website, mobile app, or
+  social page and layers on card tokenization (saved cards), split payments,
+  pre-authorization, installment payments, payouts to any Azerbaijani business
+  card 24/7, wallets, invoicing, QR/link payments, recurring payments, and
+  Apple Pay / Google Pay. Its REST payment API (base https://epoint.az/api/1)
+  authenticates every request with a merchant public_key plus a SHA1
+  data+signature scheme and returns results both synchronously and via signed
+  callbacks to the merchant's result_url.
 url: https://raw.githubusercontent.com/api-evangelist/epoint/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - 500-global
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: enrichment-pipeline
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://epoint.az/images/logo.png
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
-apis: []
+- Payments
+- Payment Gateway
+- Fintech
+- E-commerce
+- Card Payments
+- Azerbaijan
+- Apple Pay
+- Google Pay
+- Digital Wallet
+apis:
+- name: Epoint Payment API
+  description: >-
+    REST payment gateway for accepting online card payments in Azerbaijan.
+    Covers payment creation and hosted checkout, card registration/tokenization
+    and saved-card charges, refunds and reversals, pre-authorization, split
+    payments, installments, payouts, wallets, invoices, Apple Pay / Google Pay
+    token widget, and a heartbeat health check. Authenticated with a merchant
+    public_key + SHA1 signature; outcomes returned synchronously and via signed
+    callbacks.
+  humanURL: https://developer.epoint.az/en
+  baseURL: https://epoint.az/api/1
+  tags:
+  - Payments
+  - Card Payments
+  - Fintech
+  properties:
+  - type: Documentation
+    url: https://developer.epoint.az/en
+  - type: APIReference
+    url: https://developer.epoint.az/en
+  - type: GettingStarted
+    url: https://developer.epoint.az/en
+  - type: Authentication
+    url: https://developer.epoint.az/en/authentication
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -23,3 +78,54 @@ maintainers:
 common:
 - type: Website
   url: https://epoint.az
+- type: DeveloperPortal
+  url: https://developer.epoint.az/en
+- type: Documentation
+  url: https://developer.epoint.az/en
+- type: APIReference
+  url: https://developer.epoint.az/en
+- type: GettingStarted
+  url: https://developer.epoint.az/en
+- type: Blog
+  url: https://epoint.az/en/news
+- type: Support
+  url: https://epoint.az/en/contact
+- type: Login
+  url: https://epoint.az/en/login
+- type: TermsOfService
+  url: https://epoint.az/en/terms
+- type: PrivacyPolicy
+  url: https://epoint.az/en/privacy
+- type: Authentication
+  url: authentication/epoint-authentication.yml
+- type: DeclineCodes
+  url: errors/epoint-decline-codes.yml
+- type: ErrorCatalog
+  url: errors/epoint-decline-codes.yml
+- type: Conventions
+  url: conventions/epoint-conventions.yml
+- type: Webhooks
+  url: asyncapi/epoint-callbacks-webhooks.yml
+- type: Lifecycle
+  url: lifecycle/epoint-lifecycle.yml
+- type: Packages
+  url: packages/epoint-packages.yml
+- type: SDKs
+  url: packages/epoint-packages.yml
+- type: Components
+  url: components/epoint-components.yml
+- type: Conformance
+  url: conformance/epoint-conformance.yml
+- type: MCPServer
+  url: mcp/epoint-mcp.yml
+- type: WellKnown
+  url: well-known/epoint-well-known.yml
+- type: DomainSecurity
+  url: security/epoint-domain-security.yml
+- type: LLMsTxt
+  url: llms/epoint-llms.txt
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

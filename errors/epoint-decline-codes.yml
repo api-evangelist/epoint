@@ -1,0 +1,106 @@
+generated: '2026-07-19'
+method: searched
+source: https://developer.epoint.az/en/errors
+docs: https://developer.epoint.az/en/errors
+description: >-
+  Bank response codes returned in the `code` field of Epoint payment responses
+  and callbacks. These are ISO-8583-style processor codes indicating how the
+  acquiring bank processed the transaction. Complements
+  epoint-problem-types-none (Epoint publishes no separate API-level error
+  registry; the API envelope carries status:error + message + trace_id).
+envelope:
+  field: code
+  companion_fields:
+  - status
+  - message
+  - bank_response
+  - trace_id
+  masked_to_buyer: false
+groups:
+- id: success
+  range: '000'
+- id: decline
+  range: 1xx
+- id: pickup
+  range: 2xx
+- id: status-message
+  range: 3xx
+- id: other
+  range: 4xx-9xx
+decline_codes:
+- {code: '000', meaning: Approved, group: success, action: complete}
+- {code: '100', meaning: Decline (general, no comments), group: decline, action: retry-or-contact-issuer}
+- {code: '101', meaning: Decline (card expired), group: decline, action: use-another-card}
+- {code: '102', meaning: Decline (suspected fraud), group: decline, action: contact-issuer}
+- {code: '103', meaning: Decline (contact acquirer bank), group: decline, action: contact-acquirer}
+- {code: '104', meaning: Decline (restricted card), group: decline, action: use-another-card}
+- {code: '105', meaning: Decline (contact acquirer bank security department), group: decline, action: contact-acquirer}
+- {code: '106', meaning: Decline (allowable PIN attempts exceeded), group: decline, action: contact-issuer}
+- {code: '107', meaning: Decline (contact card issuer), group: decline, action: contact-issuer}
+- {code: '108', meaning: Decline (contact card issuer for special conditions), group: decline, action: contact-issuer}
+- {code: '109', meaning: Decline, invalid merchant, group: decline, action: contact-support}
+- {code: '110', meaning: Decline, invalid amount, group: decline, action: correct-amount}
+- {code: '111', meaning: Decline, invalid card number, group: decline, action: correct-card}
+- {code: '112', meaning: Decline, PIN required, group: decline, action: retry}
+- {code: '113', meaning: Decline, unacceptable amount, group: decline, action: correct-amount}
+- {code: '114', meaning: Decline, requested account type not available, group: decline, action: use-another-card}
+- {code: '115', meaning: Decline, requested function not supported, group: decline, action: contact-issuer}
+- {code: '116', meaning: Decline, insufficient funds, group: decline, action: use-another-card}
+- {code: '117', meaning: Decline, incorrect PIN, group: decline, action: retry}
+- {code: '118', meaning: Decline, no card data, group: decline, action: retry}
+- {code: '119', meaning: Decline, transaction not permitted for cardholder, group: decline, action: contact-issuer}
+- {code: '120', meaning: Decline, transaction not permitted for terminal, group: decline, action: contact-support}
+- {code: '121', meaning: Decline, withdrawal limit exceeded, group: decline, action: contact-issuer}
+- {code: '122', meaning: Decline, security violation, group: decline, action: contact-issuer}
+- {code: '123', meaning: Decline, withdrawal frequency limit exceeded, group: decline, action: retry-later}
+- {code: '124', meaning: Decline, law violation, group: decline, action: contact-issuer}
+- {code: '125', meaning: Decline, invalid card, group: decline, action: use-another-card}
+- {code: '126', meaning: Decline, PIN block error, group: decline, action: retry}
+- {code: '127', meaning: Decline, PIN length error, group: decline, action: retry}
+- {code: '128', meaning: Decline, PIN synchronization error, group: decline, action: retry}
+- {code: '129', meaning: Decline, suspected counterfeit card, group: decline, action: contact-issuer}
+- {code: '180', meaning: Decline, by cardholder request, group: decline, action: retry}
+- {code: '200', meaning: Pick-up (general, no comments), group: pickup, action: contact-issuer}
+- {code: '201', meaning: Pick-up (card expired), group: pickup, action: use-another-card}
+- {code: '202', meaning: Pick-up (suspected fraud), group: pickup, action: contact-issuer}
+- {code: '203', meaning: Pick-up (contact acquirer bank), group: pickup, action: contact-acquirer}
+- {code: '204', meaning: Pick-up (restricted card), group: pickup, action: use-another-card}
+- {code: '205', meaning: Pick-up (contact acquirer bank security department), group: pickup, action: contact-acquirer}
+- {code: '206', meaning: Pick-up (allowable PIN attempts exceeded), group: pickup, action: contact-issuer}
+- {code: '207', meaning: Pick-up (special condition), group: pickup, action: contact-issuer}
+- {code: '208', meaning: Pick-up (lost card), group: pickup, action: contact-issuer}
+- {code: '209', meaning: Pick-up (stolen card), group: pickup, action: contact-issuer}
+- {code: '210', meaning: Pick-up (suspected counterfeit card), group: pickup, action: contact-issuer}
+- {code: '300', meaning: 'Status message: file operation successful', group: status-message, action: none}
+- {code: '301', meaning: 'Status message: file operation not supported by receiver', group: status-message, action: none}
+- {code: '302', meaning: 'Status message: unable to find record in file', group: status-message, action: none}
+- {code: '303', meaning: 'Status message: duplicate record, old record replaced', group: status-message, action: none}
+- {code: '304', meaning: 'Status message: file record field edit error', group: status-message, action: none}
+- {code: '305', meaning: 'Status message: file locked', group: status-message, action: none}
+- {code: '306', meaning: 'Status message: file operation unsuccessful', group: status-message, action: none}
+- {code: '307', meaning: 'Status message: file data format error', group: status-message, action: none}
+- {code: '308', meaning: 'Status message: duplicate record, new record rejected', group: status-message, action: none}
+- {code: '309', meaning: 'Status message: unknown file', group: status-message, action: none}
+- {code: '400', meaning: Accepted (for reversal), group: other, action: none}
+- {code: '499', meaning: Approved, no original message data, group: other, action: none}
+- {code: '500', meaning: 'Status message: captured, balance available', group: other, action: none}
+- {code: '501', meaning: 'Status message: captured, no balance available', group: other, action: none}
+- {code: '502', meaning: 'Status message: amount not captured, total provided', group: other, action: none}
+- {code: '503', meaning: 'Status message: amounts not captured, no total available', group: other, action: none}
+- {code: '504', meaning: 'Status message: not captured, total provided', group: other, action: none}
+- {code: '600', meaning: Accepted (for administrative information), group: other, action: none}
+- {code: '601', meaning: 'Status message: cannot trace original transaction', group: other, action: none}
+- {code: '602', meaning: 'Status message: invalid reference number for transaction', group: other, action: none}
+- {code: '603', meaning: 'Status message: reference number / PAN incompatible', group: other, action: none}
+- {code: '604', meaning: 'Status message: POS photo not available', group: other, action: none}
+- {code: '605', meaning: 'Status message: requested item provided', group: other, action: none}
+- {code: '606', meaning: 'Status message: request cannot be fulfilled, required documents not available', group: other, action: none}
+- {code: '680', meaning: List ready, group: other, action: none}
+- {code: '681', meaning: List not ready, group: other, action: none}
+- {code: '700', meaning: Accepted (for fee collection), group: other, action: none}
+- {code: '800', meaning: Accepted (for network management), group: other, action: none}
+- {code: '900', meaning: Advice received, no financial liability accepted, group: other, action: none}
+- {code: '901', meaning: Advice received, financial liability accepted, group: other, action: none}
+- {code: '902', meaning: 'Decline reason: invalid transaction', group: other, action: contact-support}
+- {code: '903', meaning: 'Status indicator: re-enter transaction', group: other, action: retry}
+- {code: '904', meaning: 'Decline reason: format error', group: other, action: contact-support}

@@ -1,0 +1,55 @@
+# Epoint
+
+> Epoint (epoint.az) is an Azerbaijani digital payment aggregator and e-commerce platform for small and medium enterprises. It lets merchants accept online card payments on a website, app, or social page, and adds card tokenization, split payments, pre-authorization, installments, payouts to business cards, wallets, invoices, and Apple Pay / Google Pay. Backed by 500 Global. All API requests authenticate with a merchant public_key plus a SHA1 data+signature scheme over the base URL https://epoint.az/api/1.
+
+## APIs
+
+- [Epoint Payment API](https://developer.epoint.az/en): REST payment gateway (base https://epoint.az/api/1) covering payments, checkout, cards, refunds, payouts, wallets, invoices, and digital wallets.
+
+## Docs
+
+- [API Overview](https://developer.epoint.az/en): Base URL, quick start, endpoint index.
+- [Getting Started](https://developer.epoint.az/en): Register as a merchant, obtain public_key/private_key, create a payment, handle callbacks.
+- [Authentication](https://developer.epoint.az/en/authentication): data (Base64 JSON) + signature (SHA1(private_key+data+private_key)) request signing and callback verification.
+- [Callbacks](https://developer.epoint.az/en/callbacks): Signed POST to your result_url with payment outcome and statuses.
+- [Error / Bank Response Codes](https://developer.epoint.az/en/errors): 000 approved, 1xx decline, 2xx pick-up, 3xx status messages.
+- [SDKs & Plugins](https://developer.epoint.az/en/sdks): PHP SDK, WooCommerce, OpenCart.
+
+## Operations
+
+- Create Payment: POST /api/1/request
+- Checkout Redirect: POST /api/1/checkout
+- Get Payment Status: POST /api/1/get-status
+- Get Card Status: POST /api/1/get-status-card
+- Refund: POST /api/1/refund-request
+- Reverse: POST /api/1/reverse
+- Register Card: POST /api/1/card-registration
+- Execute Saved Card Payment: POST /api/1/execute-pay
+- Register Card & Pay: POST /api/1/card-registration-with-pay
+- Pre-Auth Request / Complete: POST /api/1/pre-auth-request, POST /api/1/pre-auth-complete
+- Split Payment Request / Execute: POST /api/1/split-request, POST /api/1/split-execute-pay
+- Payout: POST /api/1/payout
+- Token Widget (Apple Pay / Google Pay): POST /api/1/widget
+- Heartbeat: GET /api/1/heartbeat
+
+## SDKs
+
+- [PHP SDK (rafoabbas/epoint-php)](https://packagist.org/packages/rafoabbas/epoint-php): composer require rafoabbas/epoint-php
+- [WooCommerce plugin](https://github.com/rafoabbas/epoint-woocommerce-9.x.x)
+- [OpenCart plugin](https://github.com/rafoabbas/epoint-opencart-v3.0.x)
+
+## Artifacts
+
+- Authentication: authentication/epoint-authentication.yml
+- Decline / bank response codes: errors/epoint-decline-codes.yml
+- Conventions: conventions/epoint-conventions.yml
+- Webhooks / callbacks: asyncapi/epoint-callbacks-webhooks.yml
+- Lifecycle: lifecycle/epoint-lifecycle.yml
+- Components: components/epoint-components.yml
+- Packages: packages/epoint-packages.yml
+- Candidate MCP tools: mcp/epoint-mcp.yml
+
+## Legal
+
+- [Terms](https://epoint.az/en/terms)
+- [Privacy](https://epoint.az/en/privacy)

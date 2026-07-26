@@ -1,0 +1,27 @@
+generated: '2026-07-19'
+method: searched
+source: https://developer.epoint.az/en
+docs: https://developer.epoint.az/en
+versioning:
+  scheme: uri-path
+  current: '1'
+  base: https://epoint.az/api/1
+  note: >-
+    Single documented API version, addressed as /api/1/. No date- or
+    header-based versioning is published.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No published deprecation policy or RFC 8594 Sunset/Deprecation header support.
+sla:
+  url: null
+  uptime_target: null
+  note: No public SLA / uptime commitment published in the developer docs.
+status_page:
+  url: null
+  health_endpoint: https://epoint.az/api/1/heartbeat
+  note: >-
+    No hosted status page (e.g. status.epoint.az) found. Epoint exposes a
+    Heartbeat endpoint (GET /api/1/heartbeat -> {"status":"ok"}) as a
+    machine-readable liveness check instead.
+deprecated_operations: []

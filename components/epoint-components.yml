@@ -1,0 +1,36 @@
+generated: '2026-07-19'
+method: searched
+source: https://developer.epoint.az/en/token-payment/widget
+docs: https://developer.epoint.az/en/token-payment/widget
+description: >-
+  Client-side / embeddable surfaces Epoint offers for accepting payments inside
+  a merchant's own site or app, distinct from the server-side SDKs in packages/.
+components:
+- family: token-widget
+  name: Epoint Token Widget
+  type: hosted-iframe
+  docs: https://developer.epoint.az/en/token-payment/widget
+  description: >-
+    A hosted payment widget for Apple Pay and Google Pay. The merchant requests
+    a widget_url (POST /api/1/widget with public_key, amount, order_id,
+    description + signature) and embeds it in an iframe or webview.
+  embed: '<iframe src="WIDGET_URL" width="100%" height="400"></iframe>'
+  result_channel: >-
+    postMessage — the parent page listens for a window "message" event whose
+    data carries {status, payment:{...}} when the payment completes in the
+    iframe.
+- family: hosted-checkout
+  name: Bank Payment Page (Checkout Redirect)
+  type: hosted-redirect
+  docs: https://developer.epoint.az/en/checkout/checkout
+  description: >-
+    Full-page hosted checkout: the merchant redirects the customer to the
+    redirect_url returned by create-payment; card entry and 3-D Secure happen on
+    the bank's hosted page.
+- family: wallets
+  name: Apple Pay / Google Pay
+  type: digital-wallet
+  docs: https://developer.epoint.az/en/token-payment/apple-pay
+  description: >-
+    Apple Pay and Google Pay acceptance, delivered through the token widget
+    surface above.

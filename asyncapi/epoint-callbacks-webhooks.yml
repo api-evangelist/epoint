@@ -1,0 +1,53 @@
+generated: '2026-07-19'
+method: searched
+source: https://developer.epoint.az/en/callbacks
+docs: https://developer.epoint.az/en/callbacks
+spec_type: Webhooks
+note: >-
+  Epoint publishes no AsyncAPI document. Its event surface is a signed HTTP
+  callback: after a payment is processed and the bank responds, Epoint POSTs the
+  outcome to the merchant's configured result_url. This file captures that
+  webhook/callback catalog (type: Webhooks).
+delivery:
+  transport: http
+  method: POST
+  target: merchant result_url (configured per merchant / per payment)
+  encoding: application/x-www-form-urlencoded (data + signature)
+  verification: >-
+    Recompute signature = base64(sha1(private_key + data + private_key)) and
+    compare with the received `signature` before decoding `data`. On match, the
+    payload is authentic and untampered.
+events:
+- name: payment.callback
+  trigger: A payment reaches a terminal or intermediate state at the bank.
+  operation_codes:
+    '001': card registration
+    '100': customer payment
+  statuses:
+  - {value: new, description: Payment registered in Epoint system}
+  - {value: success, description: Payment completed successfully}
+  - {value: returned, description: Payment refund was processed}
+  - {value: failed, description: An error occurred during payment}
+  - {value: error, description: An error occurred during payment}
+  - {value: server_error, description: Status verification error}
+  payload_fields:
+  - {field: order_id, description: Unique order ID from your application}
+  - {field: status, description: 'Transaction result: success or failed'}
+  - {field: code, description: Bank response code (see errors/epoint-decline-codes.yml)}
+  - {field: message, description: Payment status message}
+  - {field: transaction, description: Epoint transaction identifier}
+  - {field: bank_transaction, description: Bank transaction identifier}
+  - {field: bank_response, description: Bank response for the payment operation}
+  - {field: operation_code, description: 001 card registration / 100 customer payment}
+  - {field: rrn, description: Retrieval Reference Number (successful transactions only)}
+  - {field: card_name, description: Cardholder name shown on the payment page}
+  - {field: card_mask, description: Card mask in 123456******1234 format}
+  - {field: amount, description: Payment amount}
+  - {field: other_attr, description: Additional parameters echoed back}
+  - {field: trace_id, description: Unique request identifier for debugging/support}
+status_check_fallback:
+  operation: get-status
+  ref: https://developer.epoint.az/en/status/get-status
+  note: >-
+    Merchants can poll the Get Status API at any time to reconcile if a callback
+    is missed.

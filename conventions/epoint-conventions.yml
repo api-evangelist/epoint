@@ -1,0 +1,66 @@
+generated: '2026-07-19'
+method: searched
+source: https://developer.epoint.az/en
+docs: https://developer.epoint.az/en
+base_url: https://epoint.az/api/1
+transport:
+  protocol: https
+  method: POST
+  content_type: application/x-www-form-urlencoded
+  request_encoding: >-
+    Each request is a form POST with two fields: `data` (Base64-encoded JSON
+    payload) and `signature`. The heartbeat endpoint is the only GET.
+  response_encoding: application/json
+authentication:
+  style: custom-signature
+  ref: authentication/epoint-authentication.yml
+  summary: public_key in payload + SHA1(private_key + data + private_key) signature.
+idempotency:
+  supported: false
+  note: >-
+    Epoint documents no idempotency-key header. `order_id` is a required
+    merchant-unique identifier per payment and is the natural de-duplication key,
+    but the docs do not describe safe automatic retry semantics, so no
+    Idempotency contract is asserted.
+pagination:
+  supported: partial
+  note: >-
+    Only the Invoice "List Invoices" operation returns collections; the docs do
+    not publish cursor/offset parameters. Payment operations are single-object.
+request_tracing:
+  request_id_field: trace_id
+  response_header: X-Request-ID
+  note: >-
+    Every response includes a `trace_id`; provide it to Epoint support to locate
+    the full request/response cycle in their logs.
+error_envelope:
+  ref: errors/epoint-decline-codes.yml
+  api_level:
+    status_field: status
+    values: [success, error, ok]
+    message_field: message
+  bank_level:
+    code_field: code
+    catalog: errors/epoint-decline-codes.yml
+versioning:
+  scheme: uri-path
+  current: 1
+  base: https://epoint.az/api/1
+  ref: lifecycle/epoint-lifecycle.yml
+currencies:
+- AZN
+- USD
+- EUR
+- RUB
+languages:
+- az
+- en
+- ru
+callbacks:
+  ref: asyncapi/epoint-callbacks-webhooks.yml
+  mechanism: >-
+    Server-to-server POST to the merchant's result_url with data + signature;
+    the merchant verifies the signature before trusting the payload.
+rate_limiting:
+  documented: false
+  note: No published rate-limit headers or quotas in the developer docs.

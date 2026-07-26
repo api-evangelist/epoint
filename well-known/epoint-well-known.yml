@@ -1,0 +1,19 @@
+generated: '2026-07-19'
+method: searched
+source: live probes of https://epoint.az/.well-known/*
+host: https://epoint.az
+documents:
+- path: /.well-known/security.txt
+  status: 404
+- path: /.well-known/openid-configuration
+  status: 404
+- path: /.well-known/oauth-authorization-server
+  status: 404
+- path: /.well-known/api-catalog
+  status: 404
+- path: /.well-known/ai-plugin.json
+  status: 404
+note: >-
+  No /.well-known/ discovery documents are published on epoint.az. Epoint uses a
+  custom public_key + signature scheme (no OIDC/OAuth authorization-server
+  metadata). Absence recorded as valid probe data.

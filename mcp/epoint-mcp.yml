@@ -1,0 +1,63 @@
+generated: '2026-07-19'
+method: derived
+status: candidate
+source: https://developer.epoint.az/en (documented operations + rafoabbas/epoint-php SDK endpoint map)
+note: >-
+  Epoint publishes no hosted/remote MCP server. This is a candidate tool list
+  derived from the documented REST operations (base https://epoint.az/api/1) so
+  an agent integrator has a grounded starting point. Each tool maps to a real,
+  documented endpoint; no operations were invented.
+server:
+  name: epoint
+  transport: http
+  url: null
+  auth: public_key + signature (see authentication/epoint-authentication.yml)
+tools:
+- name: create_payment
+  description: Create a new payment and receive a bank redirect URL.
+  endpoint: POST /api/1/request
+- name: checkout_redirect
+  description: Build a hosted checkout redirect for a payment.
+  endpoint: POST /api/1/checkout
+- name: get_payment_status
+  description: Get the current status of a payment.
+  endpoint: POST /api/1/get-status
+- name: get_card_status
+  description: Get the status of a card operation.
+  endpoint: POST /api/1/get-status-card
+- name: refund_payment
+  description: Refund a payment (full or partial).
+  endpoint: POST /api/1/refund-request
+- name: reverse_transaction
+  description: Reverse/cancel a transaction.
+  endpoint: POST /api/1/reverse
+- name: register_card
+  description: Register (tokenize) a card for future payments.
+  endpoint: POST /api/1/card-registration
+- name: execute_saved_card_payment
+  description: Charge a previously saved/registered card.
+  endpoint: POST /api/1/execute-pay
+- name: register_card_and_pay
+  description: Register a card and process a payment in one step.
+  endpoint: POST /api/1/card-registration-with-pay
+- name: preauth_request
+  description: Hold funds (authorization) before capture.
+  endpoint: POST /api/1/pre-auth-request
+- name: preauth_complete
+  description: Capture a previously authorized (pre-auth) payment.
+  endpoint: POST /api/1/pre-auth-complete
+- name: split_payment_request
+  description: Split one payment across multiple recipient merchants.
+  endpoint: POST /api/1/split-request
+- name: split_execute_pay
+  description: Execute a split payment against a saved card.
+  endpoint: POST /api/1/split-execute-pay
+- name: payout
+  description: Pay out accumulated funds to a business card.
+  endpoint: POST /api/1/payout
+- name: token_widget
+  description: Generate an Apple Pay / Google Pay widget URL.
+  endpoint: POST /api/1/widget
+- name: heartbeat
+  description: Check whether the Epoint service is operational.
+  endpoint: GET /api/1/heartbeat
