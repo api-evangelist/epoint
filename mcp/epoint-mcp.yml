@@ -2,11 +2,9 @@ generated: '2026-07-19'
 method: derived
 status: candidate
 source: https://developer.epoint.az/en (documented operations + rafoabbas/epoint-php SDK endpoint map)
-note: >-
-  Epoint publishes no hosted/remote MCP server. This is a candidate tool list
-  derived from the documented REST operations (base https://epoint.az/api/1) so
-  an agent integrator has a grounded starting point. Each tool maps to a real,
-  documented endpoint; no operations were invented.
+note: Epoint publishes no hosted/remote MCP server. This is a candidate tool list derived from the documented
+  REST operations (base https://epoint.az/api/1) so an agent integrator has a grounded starting point.
+  Each tool maps to a real, documented endpoint; no operations were invented.
 server:
   name: epoint
   transport: http
@@ -61,3 +59,9 @@ tools:
 - name: heartbeat
   description: Check whether the Epoint service is operational.
   endpoint: GET /api/1/heartbeat
+deployment:
+  mode: none
+  verified: derived
+  tools: 16
+  checked: '2026-08-12'
+  source: catalog MCP census
