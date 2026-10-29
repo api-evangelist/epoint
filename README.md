@@ -64,6 +64,103 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Epoint is a company surfaced as a portfolio company of 500-global and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Epoint (epoint.az) is an Azerbaijani digital payment aggregator and e-commerce platform for small and medium enterprises, backed by 500 Global. It lets merchants accept online card payments on their website, mobile app, or social page and layers on card tokenization (saved cards), split payments, pre-authorization, installment payments, payouts to any Azerbaijani business card 24/7, wallets, invoicing, QR/link payments, recurring payments, and Apple Pay / Google Pay. Its REST payment API (base https://epoint.az/api/1) authenticates every request with a merchant public_key plus a SHA1 data+signature scheme and returns results both synchronously and via signed callbacks to the merchant's result_url.
 
-Backed by: 500-global — https://epoint.az
+**Areas:** Company · Payments · Payment Gateway · Fintech · E-Commerce · Card Payments · Azerbaijan · Apple Pay · Google Pay · Digital Wallet
+
+## Epoint on APIs.io
+
+Everything profiled for Epoint is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/epoint/](https://apis.io/providers/epoint/)** — or go straight to one of the APIs or properties below.
+
+### APIs (1)
+
+- [Epoint Payment API](https://apis.io/apis/epoint/epoint-payment-api/) — REST payment gateway for accepting online card payments in Azerbaijan. Covers payment creation and hosted checkout, card registration/tokenization and…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Epoint Callbacks Webhooks](https://apis.io/asyncapis/epoint/epoint-callbacks-webhooks/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [epoint](https://apis.io/servers/epoint/epoint/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Epoint Authentication](https://apis.io/security/epoint/epoint-authentication/)
+- [Epoint Domain Security](https://apis.io/security/epoint/epoint-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://epoint.az)
+- [Documentation](https://developer.epoint.az/en)
+- [Getting started](https://developer.epoint.az/en)
+- [API reference](https://developer.epoint.az/en)
+- [Support](https://epoint.az/en/contact)
+- [Blog](https://epoint.az/en/news)
+- [Terms of service](https://epoint.az/en/terms)
+- [Privacy policy](https://epoint.az/en/privacy)
+
+## API Evangelist rating
+
+**Kin Score 38.2** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 39.0 |
+| Contract governance | 4.5 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 64.3 |
+| Access clarity | 27.6 |
+
+**Agent readiness 22.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 27.7** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/epoint/](https://apis.io/providers/epoint/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Epoint: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/epoint/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
